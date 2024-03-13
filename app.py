@@ -64,6 +64,9 @@ def processar_entrada_usuario(entrada_usuario):
     resultado_consulta = consultar_linha_por_ncm_uf(df, ncm_value, uf_value)
     return resultado_consulta
 
+@app.get('/')
+def index():
+    return 'app renderizado'
 
 @app.route('/chatbot', methods=['POST'])
 def chatbot():
