@@ -8,7 +8,7 @@ import json
 import os
 
 app = Flask(__name__)
-cors = CORS(app, resources={r'/chatbot/*': {'origins':'*'}})j
+cors = CORS(app, resources={r'/chatbot/*': {'origins':'*'}})
 
 openai.api_key = os.getenv("OPENAIKEY")
 
