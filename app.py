@@ -12,6 +12,7 @@ CORS(app)
 
 openai.api_key = os.getenv("OPENAIKEY")
 
+
 # Função para carregar os dados (já definida anteriormente)
 def carregar_dados(filepath):
     return pd.read_excel(filepath)
@@ -33,6 +34,7 @@ def consultar_linha_por_ncm_uf(df, ncm, uf):
     # Converte a string JSON para um dicionário Python
     resultado_dict = json.loads(resultado_json)
     return resultado_dict
+
 
 def processar_entrada_usuario(entrada_usuario):
     
@@ -69,7 +71,7 @@ def index():
     return 'app renderizado'
 
 @app.route('/chatbot', methods=['POST'])
-@cross_origin(origin='*', headers=['Content-Type'])
+@cross_origin()
 def chatbot():
     data = request.json
     entrada_usuario = data['mensagem']
