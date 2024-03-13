@@ -12,7 +12,6 @@ CORS(app)
 
 openai.api_key = os.getenv("OPENAIKEY")
 
-
 # Função para carregar os dados (já definida anteriormente)
 def carregar_dados(filepath):
     return pd.read_excel(filepath)
@@ -68,12 +67,9 @@ def processar_entrada_usuario(entrada_usuario):
 
 @app.get('/')
 def index():
-    entrada_usuario = "NCM 23099017 no estado AC?"
-    resposta = processar_entrada_usuario(entrada_usuario)
-    return jsonify(resposta)
+    return 'app renderizado'
 
 @app.route('/chatbot', methods=['POST'])
-@cross_origin(origins=['*'])
 def chatbot():
     data = request.json
     entrada_usuario = data['mensagem']
