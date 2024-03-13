@@ -68,9 +68,11 @@ def processar_entrada_usuario(entrada_usuario):
 
 @app.get('/')
 def index():
-    return 'app renderizado'
+    entrada_usuario = "NCM 23099017 no estado AC?"
+    resposta = processar_entrada_usuario(entrada_usuario)
+    return jsonify(resposta)
 
-@app.route('/chatbot/', methods=['POST'])
+@app.route('/chatbot', methods=['POST'])
 @cross_origin(origins=['*'])
 def chatbot():
     data = request.json
