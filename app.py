@@ -71,7 +71,6 @@ def index():
     return 'app renderizado'
 
 @app.route('/chatbot/', methods=['POST'])
-@cross_origin()
 def chatbot():
     data = request.json
     entrada_usuario = data['mensagem']
