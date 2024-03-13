@@ -9,7 +9,8 @@ app = Flask(__name__)
 CORS(app)
 
 import os
-api_key = os.getenv("OPENAIKEY")
+openai.api_key = os.getenv("OPENAIKEY")
+
 
 # Função para carregar os dados (já definida anteriormente)
 def carregar_dados(filepath):
@@ -68,7 +69,15 @@ def processar_entrada_usuario(entrada_usuario):
 def index():
     return 'app renderizado'
 
-@app.route('/chatbot', methods=['POST'])
+# @app.route('/chatbot', methods=['POST'])
+# def chatbot():
+#     data = request.json
+#     entrada_usuario = data['mensagem']
+#     resposta = processar_entrada_usuario(entrada_usuario)
+#     print(resposta, 'opa')
+#     return jsonify(resposta)
+
+@app.post('/chatbot')
 def chatbot():
     data = request.json
     entrada_usuario = data['mensagem']
