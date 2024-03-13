@@ -78,6 +78,7 @@ def index():
 #     return jsonify(resposta)
 
 @app.post('/chatbot')
+@cross_origin()
 def chatbot():
     data = request.json
     entrada_usuario = data['mensagem']
