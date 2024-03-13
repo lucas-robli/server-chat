@@ -9,6 +9,18 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+@app.post('/chatbot')
+@cross_origin()
+def chatbot():
+    data = request.json
+    entrada_usuario = data['mensagem']
+    resposta = processar_entrada_usuario(entrada_usuario)
+    print(resposta, 'opa')
+    return jsonify(resposta)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 import os
 openai.api_key = os.getenv("OPENAIKEY")
 
