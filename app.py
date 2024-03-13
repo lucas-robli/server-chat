@@ -34,7 +34,6 @@ def consultar_linha_por_ncm_uf(df, ncm, uf):
     resultado_dict = json.loads(resultado_json)
     return resultado_dict
 
-
 def processar_entrada_usuario(entrada_usuario):
     
     #Passo 1: Analisar a entrada do usuário com GPT-3 para extrair NCM e UF
@@ -70,6 +69,7 @@ def index():
     return 'app renderizado'
 
 @app.route('/chatbot', methods=['POST'])
+@cross_origin(origin='*', headers=['Content-Type'])
 def chatbot():
     data = request.json
     entrada_usuario = data['mensagem']
