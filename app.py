@@ -5,11 +5,11 @@ import openai
 import pandas as pd
 from docx import Document
 import json
+import os
 
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r'/chatbot/*': {'origins':'*'}})j
 
-import os
 openai.api_key = os.getenv("OPENAIKEY")
 
 
@@ -70,7 +70,7 @@ def processar_entrada_usuario(entrada_usuario):
 def index():
     return 'app renderizado'
 
-@app.route('/chatbot', methods=['POST'])
+@app.route('/chatbot/', methods=['POST'])
 @cross_origin()
 def chatbot():
     data = request.json
