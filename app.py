@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask_cors import cross_origin
 import openai
 import pandas as pd
 from docx import Document
